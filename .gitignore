@@ -1,0 +1,8 @@
+# Ignore PhpStorm (IntelliJ) project files
+.idea
+
+# OS X
+.DS_Store
+
+# Composer files
+/vendor/
