@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-    <link href='http://fonts.googleapis.com/css?family=Belleza' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
     <link href='/style/style.css' rel='stylesheet' type='text/css'>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Language" content="da">
@@ -10,17 +12,17 @@
     <meta property="og:description"
           content="Har du lyst til en rigtig god kop kaffe, men ved ikke helt om det er det rigtige tidspunkt til kaffe? Tjek det her på 'Er det kaffetid?'"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="http://erdetkaffetid.dk"/>
-    <meta property="og:image" content="http://erdetkaffetid.dk/img/logo-800.jpg"/>
+    <meta property="og:url" content="https://erdetkaffetid.dk"/>
+    <meta property="og:image" content="https://erdetkaffetid.dk/img/logo-800.jpg"/>
     <meta property="og:site_name" content="Er det kaffetid?"/>
     <meta property="fb:admins" content="522077624"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script src="/js/html5.js" type="text/javascript"></script>
     <script src="/js/script.js" type="text/javascript"></script>
-    <script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
+    <script src="https://maps.google.com/maps/api/js" type="text/javascript"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
-        <?php if (!self::read('Debug') && self::read('Keys.GoogleAnalyticsId') != '') { ?>
+        <?php if (!self::read('Debug') && !empty(self::read('Keys.GoogleAnalyticsId'))) { ?>
         _gaq.push(['_setAccount', <?php print self::read('Keys.GoogleAnalyticsId');?>]);
         _gaq.push(['_setDomainName', 'erdetkaffetid.dk']);
         _gaq.push(['_trackPageview']);
@@ -59,7 +61,7 @@
                 }
             }(document, "script", "twitter-wjs");</script>
     </p>
-    <div class="fb-like" data-href="http://erdetkaffetid.dk" data-send="false" data-width="350" data-show-faces="false"
+    <div class="fb-like" data-href="https://erdetkaffetid.dk" data-send="false" data-width="350" data-show-faces="false"
          data-font="lucida grande"></div>
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
@@ -73,7 +75,7 @@
     <p>Billedet har jeg taget selv, teksten er forfattet af undertegnede og koden er skrevet selv, dog med hjælp fra
         tredjepartsbiblioteker. Oversat: Alt der ligger PÅ dette domæne er mit, og jeg giver dig hermed ret til at
         kopiere det og bruge det, som du har lyst til.</p>
-    <p>Tak til <a href="http://znegl.dk/" target="_new">Thomas Grinderslev</a> for inspirationen til at lave siden.</p>
+    <p>Tak til <a href="https://znegl.dk/" target="_new">Thomas Grinderslev</a> for inspirationen til at lave siden.</p>
     <p>Kan du lide siden og vil støtte den? Så giv en kop kaffe ved lejlighed! :)</p>
     <div class="btn fRight"><a href="#" class="infoClose">Luk</a></div>
 </section>
