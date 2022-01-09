@@ -20,23 +20,16 @@
     <script src="/js/html5.js" type="text/javascript"></script>
     <script src="/js/script.js" type="text/javascript"></script>
     <script src="https://maps.google.com/maps/api/js" type="text/javascript"></script>
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        <?php if (!self::read('Debug') && !empty(self::read('Keys.GoogleAnalyticsId'))) { ?>
-        _gaq.push(['_setAccount', '<?php print self::read('Keys.GoogleAnalyticsId');?>']);
-        _gaq.push(['_setDomainName', 'erdetkaffetid.dk']);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = 'https://ssl.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-        <?php } ?>
+    <?php if (!self::read('Debug') && !empty(self::read('Keys.GoogleAnalyticsId'))) { ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-30898319-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '<?php print self::read('Keys.GoogleAnalyticsId');?>');
     </script>
+    <?php } ?>
 </head>
 <body>
 <img src="/img/bg.jpg" id="bg" alt=""/>
