@@ -16,7 +16,7 @@ require_once ROOT . 'vendor' . DS . 'autoload.php';
 Config::load();
 
 // Startup checks
-if (!empty(Config::read('Keys.GoogleApi'))) {
+if (empty(Config::read('Keys.GoogleApi'))) {
     Template::show('missing_api_key');
 }
 
