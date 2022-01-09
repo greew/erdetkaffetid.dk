@@ -23,7 +23,7 @@
     <script type="text/javascript">
         var _gaq = _gaq || [];
         <?php if (!self::read('Debug') && !empty(self::read('Keys.GoogleAnalyticsId'))) { ?>
-        _gaq.push(['_setAccount', <?php print self::read('Keys.GoogleAnalyticsId');?>]);
+        _gaq.push(['_setAccount', '<?php print self::read('Keys.GoogleAnalyticsId');?>']);
         _gaq.push(['_setDomainName', 'erdetkaffetid.dk']);
         _gaq.push(['_trackPageview']);
 
