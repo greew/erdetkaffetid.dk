@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
 
     // ----- CREATE HELPER FUNCTIONS ----- //
 
@@ -17,9 +17,9 @@ $(document).ready(function () {
      * @param {string} id Id of the element to show as a popup.
      */
     function showPopup(id) {
-        var windowHeight = document.documentElement.clientHeight;
-        var el = $("#" + id);
-        var fadeout = $("#fadeout");
+        const windowHeight = document.documentElement.clientHeight;
+        const el = $("#" + id);
+        const fadeout = $("#fadeout");
         el.css({
             "position": "absolute",
             "top": (windowHeight / 2) - (el.height() / 2),
@@ -45,10 +45,10 @@ $(document).ready(function () {
     // ----- SETUP PAGE CONTENTS ----- //
 
     // Setup variables, reasons, coffees and such
-    var doIt = true;
-    var reasons = [];
-    var hour = (new Date()).getHours();
-    var coffee = [
+    let doIt = true;
+    let reasons = [];
+    const hour = (new Date()).getHours();
+    let coffee = [
         'Espresso',
         'dobbelt Espresso',
         'Café Latte',
@@ -58,7 +58,7 @@ $(document).ready(function () {
         'Café au Lait',
         'Cortado'
     ];
-    var fetch = [
+    let fetch = [
         'Snup straks en',
         'Hent en',
         'Tag dig en',
@@ -140,11 +140,11 @@ $(document).ready(function () {
             break;
     }
 
-    var map = null;
-    var infoWindow = null;
+    let map = null;
+    let infoWindow = null;
 
     // Setup findCoffee button and click listener for it
-    var findCoffeeBtn = $(document.createElement('a')).attr('href', '#').append('Find nærmeste café');
+    const findCoffeeBtn = $('<a href="#">').append('Find nærmeste café');
     $(findCoffeeBtn).click(function (event) {
         event.preventDefault();
 
@@ -158,15 +158,15 @@ $(document).ready(function () {
 
             $('#status').addClass('success').empty().append("found you!");
 
-            var mapcanvas = $(document.createElement('div')).attr('id', 'mapcanvas').height('400px').width('500px')[0];
+            const mapcanvas = $('<div>').attr('id', 'mapcanvas').height('400px').width('500px')[0];
             $('#mapContainer').append(mapcanvas);
             showPopup('map');
 
-            var latlng = new google.maps.LatLng(
+            const latlng = new google.maps.LatLng(
                 position.coords.latitude,
                 position.coords.longitude
             );
-            var myOptions = {
+            const myOptions = {
                 language: 'da',
                 zoom: 14,
                 center: latlng,
@@ -176,7 +176,7 @@ $(document).ready(function () {
             };
             map = new google.maps.Map(mapcanvas, myOptions);
 
-            var marker = new google.maps.Marker({
+            const marker = new google.maps.Marker({
                 animation: google.maps.Animation.DROP,
                 position: latlng,
                 map: map,
@@ -184,12 +184,8 @@ $(document).ready(function () {
             });
 
             infoWindow = new google.maps.InfoWindow({});
-            google.maps.event.addListener(marker, 'click', function (e) {
-                infoWindow.setContent(
-                    $(document.createElement('div')).append(
-                        $(document.createElement('h1')).append('Du er her')
-                    ).html()
-                );
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.setContent($('<div>').append($('<h1>').append('Du er her')).html());
                 infoWindow.open(map, this);
             });
 
@@ -207,14 +203,14 @@ $(document).ready(function () {
 
         // For each found coffee location, add a new marker to the map
         function findCoffee(data) {
-            for (var i = 0; i < Math.min(10, data.data.results.length); i++) {
-                var c = data.data.results[i];
-                var pos = new google.maps.LatLng(c.geometry.location.lat, c.geometry.location.lng);
-                var html = '<div>' +
+            for (let i = 0; i < Math.min(10, data.data.results.length); i++) {
+                const c = data.data.results[i];
+                const pos = new google.maps.LatLng(c.geometry.location.lat, c.geometry.location.lng);
+                const html = '<div>' +
                     '<h3>' + c.name + '</h3>' +
                     '<p>' + c.vicinity + '</p>' +
                     '</div>';
-                var coffeeIcon = new google.maps.Marker({
+                const coffeeIcon = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
                     position: pos,
                     map: map,
@@ -222,7 +218,7 @@ $(document).ready(function () {
                     icon: 'http://erdetkaffetid.dk/img/bean-30.png',
                     html: html
                 });
-                google.maps.event.addListener(coffeeIcon, 'click', function (e) {
+                google.maps.event.addListener(coffeeIcon, 'click', function () {
                     infoWindow.setContent(this.html);
                     infoWindow.open(map, this);
                 });
@@ -232,12 +228,12 @@ $(document).ready(function () {
         // Error handling if we couldn't get the position
         function error() {
             $('#mapContainer').append(
-                $(document.createElement('p')).append('Det er desværre ikke muligt at få fat i din position lige nu. Dette kan bl.a. skyldes følgende ting:'),
-                $(document.createElement('ul')).append(
-                    $(document.createElement('li')).append('Din browser understøtter ikke muligheden for at se din position.'),
-                    $(document.createElement('li')).append('Du har valgt at blokere, at http://erdetkaffetid.dk kan tilgå din position.')
+                $('<p>').append('Det er desværre ikke muligt at få fat i din position lige nu. Dette kan bl.a. skyldes følgende ting:'),
+                $('<ul>').append(
+                    $('<li>').append('Din browser understøtter ikke muligheden for at se din position.'),
+                    $('<li>').append('Du har valgt at blokere, at https://erdetkaffetid.dk kan tilgå din position.')
                 ),
-                $(document.createElement('p')).append('Hvis du får fat i en browser, der tillader muligheden for at se din position, og du aktiverer at vi kan se det, så genindlæs siden her. Så kan du får kortet frem.')
+                $('<p>').append('Hvis du får fat i en browser, der tillader muligheden for at se din position, og du aktiverer at vi kan se det, så genindlæs siden her. Så kan du får kortet frem.')
             );
             showPopup('map');
         }
@@ -251,10 +247,10 @@ $(document).ready(function () {
 
     // Setup coffee texts
     $('#text').append(
-        $(document.createElement('h1')).append(doIt ? 'Ja!' : 'Nej!'),
-        $(document.createElement('p')).append(r(reasons)),
-        $(document.createElement('p')).append(r(fetch) + (doIt ? ' ' + r(coffee) : '')),
-        $(document.createElement('p')).attr('class', 'small').append(doIt ? findCoffeeBtn : '')
+        $('<h1>').append(doIt ? 'Ja!' : 'Nej!'),
+        $('<p>').append(r(reasons)),
+        $('<p>').append(r(fetch) + (doIt ? ' ' + r(coffee) : '')),
+        $('<p>').attr('class', 'small').append(doIt ? findCoffeeBtn : '')
     );
 
     // ----- SETUP GLOBAL LISTENERS ----- //
@@ -277,20 +273,14 @@ $(document).ready(function () {
         hidePopup('map');
     });
 
-});
-
-// Setup listener to resize the background if window is resized
-$(window).ready(function () {
-    function resizeBg() {
-        var bg = $("#bg");
-        if (($(window).width() / $(window).height()) < (bg.width() / bg.height())) {
-            bg.removeClass().addClass('bgheight');
+    // Setup listener to resize the background if window is resized
+    $(window).on('resize', function () {
+        const $bg = $("#bg");
+        $bg.removeClass('bgheight bgwidth');
+        if (($(window).width() / $(window).height()) < ($bg.width() / $bg.height())) {
+            $bg.addClass('bgheight');
         } else {
-            bg.removeClass().addClass('bgwidth');
+            $bg.addClass('bgwidth');
         }
-    }
-
-    $(window).resize(function () {
-        resizeBg();
     }).trigger("resize");
 });
