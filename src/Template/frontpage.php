@@ -20,16 +20,6 @@
     <script src="/js/html5.js" type="text/javascript"></script>
     <script src="/js/script.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?keys=<?php self::read('Keys.GoogleApi');?>" type="text/javascript"></script>
-    <?php if (!self::read('Debug') && !empty(self::read('Keys.GoogleAnalyticsId'))) { ?>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-30898319-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '<?php print self::read('Keys.GoogleAnalyticsId');?>');
-    </script>
-    <?php } ?>
 </head>
 <body>
 <img src="/img/bg.jpg" id="bg" alt=""/>

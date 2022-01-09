@@ -17,7 +17,6 @@ $(document).ready(function () {
      * @param {string} id Id of the element to show as a popup.
      */
     function showPopup(id) {
-        _gaq.push(['_trackEvent', 'Popup', 'Open', id]);
         var windowHeight = document.documentElement.clientHeight;
         var el = $("#" + id);
         var fadeout = $("#fadeout");
@@ -39,7 +38,6 @@ $(document).ready(function () {
      * @param {string} id Id of the element to hide.
      */
     function hidePopup(id) {
-        _gaq.push(['_trackEvent', 'Popup', 'Close', id]);
         $("#fadeout").fadeOut("slow");
         $("#" + id).fadeOut("slow");
     }
