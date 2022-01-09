@@ -5,5 +5,10 @@
     "psr-4": {
       "Greew\\Sites\\ErDetKaffetidDk\\": "src"
     }
+  },
+  "require": {
+    "php": ">=7.3",
+    "ext-curl": "*",
+    "ext-json": "*"
   }
 }

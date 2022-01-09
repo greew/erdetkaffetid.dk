@@ -16,12 +16,11 @@ require_once ROOT . 'vendor' . DS . 'autoload.php';
 Config::load();
 
 // Startup checks
-if (Config::read('Keys.GoogleApi') == '') {
+if (!empty(Config::read('Keys.GoogleApi'))) {
     Template::show('missing_api_key');
 }
 
-$request = $_SERVER['REQUEST_URI'];
-$request = parse_url($request);
+$request = parse_url($_SERVER['REQUEST_URI']);
 
 /* Simple router system */
 switch ($request['path']) {
@@ -30,11 +29,7 @@ switch ($request['path']) {
         break;
 
     case '/':
-        Template::show('frontpage');
-        break;
-
     default:
-        header("HTTP/1.1 404 Not Found");
-        Template::show('error');
+        Template::show('frontpage');
         break;
 }
