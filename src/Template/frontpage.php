@@ -19,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script src="/js/html5.js" type="text/javascript"></script>
     <script src="/js/script.js" type="text/javascript"></script>
-    <script src="https://maps.google.com/maps/api/js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?keys=<?php self::read('Keys.GoogleApi');?>" type="text/javascript"></script>
     <?php if (!self::read('Debug') && !empty(self::read('Keys.GoogleAnalyticsId'))) { ?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-30898319-1"></script>
